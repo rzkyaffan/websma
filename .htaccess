@@ -1,0 +1,3 @@
+<Files "functions.php">
+    Deny from all
+</Files>
