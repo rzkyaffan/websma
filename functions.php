@@ -106,3 +106,116 @@ function delete()
     return mysqli_affected_rows($db);
 }
 
+
+
+
+
+
+
+
+
+
+// FUNCTION FOR SERVICES
+function kueri($querysyntax)
+{
+    global $db;
+    $result = mysqli_query($db, $querysyntax);
+    $rows = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+    return $rows;
+}
+
+//Add Functions
+function tambahLayanan($param)
+{
+    global $db;
+    $link = htmlspecialchars($param["tautan"]);
+    $caption = htmlspecialchars($param["keterangan"]);
+
+    // Upload Image
+    $gambar = upload();
+    if (!$gambar) {
+        return false;
+    }
+
+    $query = "INSERT INTO post VALUES( 0,'$link', '$gambar', '$caption')";
+
+    mysqli_query($db, $query);
+
+    return mysqli_affected_rows($db);
+}
+
+// Upload Functions
+
+function unggahLayanan()
+{
+    $namaFile = $_FILES['gambar']['name'];
+    $ukuranFile = $_FILES['gambar']['size'];
+    $error = $_FILES['gambar']['error'];
+    $tmpName = $_FILES['gambar']['tmp_name'];
+
+    // Cek Apakah Gambar di upload 
+    if ($error === 4) {
+        echo "<script>
+        alert('Mohon Pilih Gambar Terlebih Dahulu !')
+        </script>";
+        return false;
+    }
+
+    // Cek Apakah Benar Gambar Yang Di Upload
+
+    $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+    $ekstensiGambar = explode('.', $namaFile);
+    $ekstensiGambar = strtolower(end($ekstensiGambar));
+    if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+        echo "<script>
+        alert('Hayo Mau upload Apa? :) \n yang anda upload, bukan gambar')
+        </script>";
+        return false;
+    }
+
+    // Cek Ukuran File
+    if ($ukuranFile > 1500000) {
+        echo "<script>
+        alert('Ukuran Gambar Terlalu Besar, Mohon Pilih Gambar Lain')
+        </script>";
+        return false;
+    }
+    // Lolos Pengecekan Gambar Siap Upload
+    // Generate Nama Random Untuk Gambarnya
+    $namaFileBaru = uniqid();
+    $namaFileBaru .= '.';
+    $namaFileBaru .= $ekstensiGambar;
+    move_uploaded_file($tmpName, 'assets/img/' . $namaFileBaru);
+    return $namaFileBaru;
+}
+
+
+
+// Delete Functions
+function hapusLayanan()
+{
+    global $db;
+    global $id;
+    $image = $_GET["data2"];
+    mysqli_query($db, "DELETE FROM services WHERE id = $id");
+    $fileToDelete = 'assets/img/'.$image;
+    if (file_exists($fileToDelete)) {
+        if (unlink($fileToDelete)) {
+            echo "<script>
+            alert('Gambar Berhasil di hapus')
+            </script>";
+        } else {
+            echo "<script>
+            alert('Gambar gagal di hapus ! ')
+            </script>";
+        }
+    } else {
+        echo "<script>
+        alert('Gambar Tidak Ditemukan')
+        </script>";
+    }
+    return mysqli_affected_rows($db);
+}

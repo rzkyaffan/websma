@@ -1,10 +1,12 @@
 <?php
 require 'functions.php';
+$jumlahDataPerhalaman = 5; 
 $posts = query("SELECT * FROM post ORDER BY id DESC");
+$all = query("SELECT * FROM post ORDER BY id DESC LIMIT 0, $jumlahDataPerhalaman");
+$services =  kueri("SELECT * FROM services ORDER BY id DESC");
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,7 +41,7 @@ $posts = query("SELECT * FROM post ORDER BY id DESC");
           <li><a href="#home" class="active nav__link">Beranda</a></li>
 
           <li><a href="#service" class="nav__link">Layanan</a></li>
-          <li><a href="#event" class="nav__link">Acara</a></li>
+          <li><a href="#medsos" class="nav__link">Sosial Media</a></li>
 
           <!--=============== DROPDOWN ===============-->
           <li class="dropdown__item">
@@ -62,9 +64,9 @@ $posts = query("SELECT * FROM post ORDER BY id DESC");
             </ul>
           </li>
 
-          <li><a href="#" class="nav__link">Galeri</a></li>
-          <li><a href="#" class="nav__link">Kontak</a></li>
-          <li><a href="#" class="nav__link">Sponsor</a></li>
+          <li><a href="#galery" class="nav__link">Galeri</a></li>
+          <li><a href="#contact" class="nav__link">Kontak</a></li>
+          <li><a href="#support" class="nav__link">Sponsor</a></li>
         </ul>
       </div>
     </nav>
@@ -74,15 +76,15 @@ $posts = query("SELECT * FROM post ORDER BY id DESC");
   <section class="section-container" id="home">
     <div class="caption">
       <h1>Event Organizer Tulungagung</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim harum temporibus itaque porro nobis dolorem ullam, sapiente velit consectetur, quasi expedita consequuntur qui ex et aperiam ab nulla excepturi voluptas nostrum vel recusandae doloribus, distinctio cum! Tempore, ipsa aperiam fuga veniam aliquam quam earum eligendi voluptas quisquam unde. Tempore quisquam laboriosam dolorum dicta nulla est, error provident natus id. Nam.</p>
+      <p>Smanusa - SMA Negeri 1 Ngunut</p>
     </div>
     <div class="recent-wrapper">
       <h1>Recently Events</h1>
       <div class="recent">
-        <?php foreach ($posts as $post) : ?>
-          <a href="<?= $post["link"] ?>" class="img-wrapper">
-            <img src="assets/img/<?= $post["image"] ?>" alt="event">
-            <h1><?= $post["caption"] ?></h1>
+        <?php foreach ($all as $part) : ?>
+          <a href="<?= $part["link"] ?>" class="img-wrapper">
+            <img src="assets/img/<?= $part["image"] ?>" alt="Acara Terakhir">
+            <h1><?= $part["caption"] ?></h1>
           </a>
         <?php endforeach ?>
       </div>
@@ -94,44 +96,35 @@ $posts = query("SELECT * FROM post ORDER BY id DESC");
   <section class="section-container" id="service">
     <h1 class="section-title">Layanan</h1>
     <div class="service-wrapper">
+     <?php foreach ($services as $service) : ?>
       <div class="elemen">
-        <h1 class="service-title">Paket Video Shooting</h1>
-        <img src="assets/img/camera.jpg" alt="">
-        <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad, exercitationem. Sed error blanditiis, eaque facere provident possimus eius officia consequatur et maiores reiciendis eos dolorem laborum tempore amet ut iste!</h3>
+        <h1 class="service-title"><?= $service["caption"]?></h1>
+        <img src="assets/img/<?=$service["image"]?>" alt="Gambar Layanan">
+        <h3><a href="<?= $service["link"] ?>">Klik Disini !</a></h3>
       </div>
-      <div class="elemen">
-        <h1 class="service-title">Produksi Film</h1>
-        <img src="assets/img/film.jpg" alt="">
-        <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad, exercitationem. Sed error blanditiis, eaque facere provident possimus eius officia consequatur et maiores reiciendis eos dolorem laborum tempore amet ut iste!</h3>
-      </div>
-      <div class="elemen">
-        <h1 class="service-title">Paket Video</h1>
-        <img src="assets/img/art.jpg" alt="">
-        <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad, exercitationem. Sed error blanditiis, eaque facere provident possimus eius officia consequatur et maiores reiciend is eos dolorem laborum tempore amet ut iste!</h3>
-      </div>
+    <?php endforeach ?>
+      
+
     </div>
   </section>
 
 
-  <!--=============== SECTION EVENT===============-->
-  <section class="section-container" id="event">
-    <h1 class="section-title">Acara</h1>
+  <!--=============== SECTION SOSMED===============-->
+  <section class="section-container" id="medsos">
+    <h1 class="section-title">Sosmed</h1>
     <div class="service-wrapper">
-      <div class="elemen">
-        <h1 class="service-title">Paket Video Shooting</h1>
-        <img src="assets/img/camera.jpg" alt="">
-        <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad, exercitationem. Sed error blanditiis, eaque facere provident possimus eius officia consequatur et maiores reiciendis eos dolorem laborum tempore amet ut iste!</h3>
-      </div>
-      <div class="elemen">
-        <h1 class="service-title">Produksi Film</h1>
-        <img src="assets/img/film.jpg" alt="">
-        <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad, exercitationem. Sed error blanditiis, eaque facere provident possimus eius officia consequatur et maiores reiciendis eos dolorem laborum tempore amet ut iste!</h3>
-      </div>
-      <div class="elemen">
-        <h1 class="service-title">Paket Video</h1>
+      <a href="https://www.instagram.com/whatsonsmanusa?igsh=czl1Mm5xc3NiOWxo" class="elemen">
+        <h1 class="service-title">Whatonsmanusa</h1>
+        <img src="assets/img/osisIg.jpg" alt="">
+      </a>
+      <a href="https://www.instagram.com/smanusa.official?igsh=MWNhNDJkZHVsNGl2cA== " class="elemen">
+        <h1 class="service-title">Official Smanusa</h1>
+        <img src="assets/img/smanusaOfc.jpg" alt="">
+      </a>
+      <a href="" class="elemen">
+        <h1 class="service-title">Youtube Smanusa</h1>
         <img src="assets/img/art.jpg" alt="">
-        <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad, exercitationem. Sed error blanditiis, eaque facere provident possimus eius officia consequatur et maiores reiciend is eos dolorem laborum tempore amet ut iste!</h3>
-      </div>
+      </a>
     </div>
   </section>
 
@@ -150,22 +143,21 @@ $posts = query("SELECT * FROM post ORDER BY id DESC");
   </section>
 
   <!--=============== SECTION GALLERY ===============-->
-  <section class="section-container" id="about">
+  <section class="section-container" id="galery">
     <h1 class="section-title">Galery</h1>
-    <div class="about-wrapper">
-      <div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis odit quod rerum. Veritatis fuga deserunt recusandae fugit numquam iusto nihil minus magnam a. Consectetur doloribus, suscipit quis officiis perferendis aperiam?</p>
+    <div class="galery-wrapper">
+      <?php foreach ($posts as $post) : ?>
+      <div class="galery-photo">
+        <img src="assets/img/<?=$post["image"]?>" alt="">
       </div>
-      <div>
-        <P>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae aut laborum voluptatibus magni sint et earum reprehenderit dicta neque nostrum, adipisci ratione, eius quaerat fugiat explicabo quas necessitatibus placeat illum.</P>
-      </div>
+      <?php endforeach ?>
     </div>
   </section>
 
 
 
   <!--=============== SECTION CONTACT ===============-->
-  <section class="section-container" id="about">
+  <section class="section-container" id="contact">
     <h1 class="section-title">Kontak</h1>
     <div class="about-wrapper">
       <div>
@@ -177,7 +169,7 @@ $posts = query("SELECT * FROM post ORDER BY id DESC");
     </div>
   </section>
   <!--=============== SECTION SUPPORTED ===============-->
-  <section class="section-container" id="about">
+  <section class="section-container" id="support">
     <h1 class="section-title">Kontak</h1>
     <div class="about-wrapper">
       <div>
@@ -188,10 +180,7 @@ $posts = query("SELECT * FROM post ORDER BY id DESC");
       </div>
     </div>
   </section>
-
-  </section>
   <!--=============== MAIN JS ===============-->
   <script src="assets/js/main.js"></script>
 </body>
-
 </html>

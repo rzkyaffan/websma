@@ -78,7 +78,10 @@ a {
   flex-direction: column;
   justify-content: center;
 }
-
+a h1{
+  color: var(--white-color);
+  font-size: .8rem;
+}
 .section-title {
   text-align: center;
 }
@@ -156,7 +159,10 @@ h3 {
 #home,
 #about,
 #service,
-#event {
+#medsos,
+#galery,
+#support,
+#contact{
   margin: auto;
   padding-top: 7rem;
 }
@@ -349,6 +355,9 @@ h3 {
   border: 0.1rem solid var(--white-color);
   border-radius: 0.3rem;
 }
+.elemen a{
+  color: rgb(33, 114, 226);
+}
 .elemen img {
   width: 10rem;
   height: 10rem;
@@ -360,6 +369,11 @@ h3 {
   font-weight: 300;
 }
 
+/* GALERY SECTION */
+.galery-photo img{
+  width: 12rem;
+  height: 10rem;
+}
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 @media screen and (max-width: 648px) {
@@ -379,6 +393,12 @@ h3 {
   .elemen {
     width: 100%;
   }
+  .galery-wrapper img{
+    width: 100%;
+}
+.galery-photo{
+  width: 100%;
+}
 }
 
 /* For large devices */
@@ -467,4 +487,17 @@ h3 {
 }
 .about-wrapper p {
   text-align: justify;
+}
+
+/* SECTION GALERY */
+.galery-wrapper{
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.galery-wrapper img{
+  object-fit: cover;
+  object-position: center;
 }

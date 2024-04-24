@@ -1,9 +1,15 @@
 <?php
+session_start();
+if( !isset($_SESSION["login"])){
+    header("Location: login.php");
+    exit;
+}
 require 'functions.php';
 $posts = query("SELECT * FROM post ORDER BY id DESC");
+$services = query("SELECT * FROM services ORDER BY id DESC");
 
-if (isset($_POST["submit"])) {
-    if (tambah($_POST) > 0) {
+if (isset($_POST["kirim"])) {
+    if (tambahLayanan($_POST) > 0) {
         echo
         "
     <script>
@@ -19,7 +25,28 @@ if (isset($_POST["submit"])) {
     </script>
         ";
     }
+} else {
+    if (isset($_POST["submit"])) {
+        if (tambah($_POST) > 0) {
+            echo
+            "
+        <script>
+        alert('input successful');
+        document.location.href = 'index.php'
+        </script>
+            ";
+        } else {
+            echo
+            "
+        <script>
+        alert('input gagal, coba lagi nanti);
+        </script>
+            ";
+        }
+    } 
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,15 +64,17 @@ if (isset($_POST["submit"])) {
         a {
             text-decoration: none;
         }
-        html{
+
+        html {
             overflow-x: hidden;
         }
-        body{
+
+        body {
             background: #edeff8;
         }
 
         h1 {
-            font-size: 1.5rem;
+            font-size: 1.1rem;
         }
 
         form {
@@ -118,9 +147,15 @@ if (isset($_POST["submit"])) {
             display: flex;
             flex-direction: column;
         }
+        img{
+            width: 18rem;
+            height: 9rem;
+            object-fit: cover;
+            object-position: center;
+        }
 
-        @media screen and (max-width: 700px){
-            html{
+        @media screen and (max-width: 700px) {
+            html {
                 font-size: 65%;
             }
         }
@@ -133,11 +168,11 @@ if (isset($_POST["submit"])) {
             <h1>Welcome, Admin</h1>
         </header>
 
-        <h1>Tambahkan Data</h1>
+        <h1>Recently Event & Galeri</h1>
         <form action="" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="id">
             <li>
-                <label for="links">Links : </label>
+                <label for="links">Links</label>
                 <input type="text" name="links" id="links" required>
             </li>
 
@@ -153,7 +188,7 @@ if (isset($_POST["submit"])) {
             <button type="submit" name="submit">Create</button>
         </form>
 
-        <h1>Priview Data</h1>
+        <h1>Priview Data Recenly Event & Layanan</h1>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th>ID</th>
@@ -167,15 +202,61 @@ if (isset($_POST["submit"])) {
                 <?php foreach ($posts as $post) : ?>
                     <td><?= $i ?></td>
                     <td><?= $post["link"]; ?></td>
-                    <td><?= $post["image"]; ?></td>
+                    <td><img src="assets/img/<?= $post["image"]?>" alt="gambar-event-terakhir"></td>
                     <td><?= $post["caption"]; ?></td>
                     <td>
-                        <button type="submit" class="btn danger" onclick="return confirm(`apakah anda yakin? \ntindakan ini tidak dapat diurungkan`)"><a href="delete.php?id=<?= $post["id"]?>&data2=<?=$post["image"]?>" class="danger">Delete</a></button>
+                        <button type="submit" class="btn danger" onclick="return confirm(`apakah anda yakin? \ntindakan ini tidak dapat diurungkan`)"><a href="delete.php?id=<?= $post["id"] ?>&data2=<?= $post["image"] ?>" class="danger">Delete</a></button>
                     </td>
             </tr>
             <?php $i++; ?>
         <?php endforeach; ?>
         </table>
+
+        <h1>Layanan</h1>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="no">
+            <li>
+                <label for="tautan">Tautan</label>
+                <input type="text" name="tautan" id="tautan" required>
+            </li>
+
+            <li>
+                <label for="gambar">Gambar</label>
+                <input type="file" name="gambar" id="gambar">
+            </li>
+
+            <li>
+                <label for="keterangan">Keterangan</label>
+                <input type="text" name="keterangan" id="keterangan" required>
+            </li>
+            <button type="submit" name="kirim">Buat</button>
+        </form>
+
+        <h1>Priview Data Galery & Recenly Event</h1>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th>ID</th>
+                <th>Tautan</th>
+                <th>Gambar</th>
+                <th>Keterangan</th>
+                <th>Aksi</th>
+            </tr>
+            <tr>
+                <?php $i = 1; ?>
+                <?php foreach ($services as $service) : ?>
+                    <td><?= $i ?></td>
+                    <td><?= $service["link"]; ?></td>
+                    <td><?= $service["image"]; ?></td>
+                    <td><?= $service["caption"]; ?></td>
+                    <td>
+                        <button type="submit" class="btn danger" onclick="return confirm(`apakah anda yakin? \ntindakan ini tidak dapat diurungkan`)"><a href="delete.php?id=<?= $service["id"] ?>&data2=<?= $service["image"] ?>" class="danger">Delete</a></button>
+                    </td>
+            </tr>
+            <?php $i++; ?>
+        <?php endforeach; ?>
+        </table>
+
+
     </main>
 
     <script src="assets/js/main.js"></script>
