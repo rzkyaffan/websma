@@ -60,6 +60,11 @@ if (isset($_POST["kirim"])) {
             border: none;
             font-family: 'poppins', sans-serif;
         }
+        body,
+        main{
+            margin: 0;
+            padding: 0;
+        }
 
         a {
             text-decoration: none;
@@ -148,7 +153,7 @@ if (isset($_POST["kirim"])) {
             flex-direction: column;
         }
         img{
-            width: 18rem;
+            width: 10rem;
             height: 9rem;
             object-fit: cover;
             object-position: center;

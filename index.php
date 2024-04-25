@@ -51,8 +51,8 @@ $services =  kueri("SELECT * FROM services ORDER BY id DESC");
 
             <ul class="dropdown__menu">
               <li>
-                <a href="#" class="dropdown__link">
-                  <i class="ri-message-3-line"></i> Pertanyaan
+                <a href="#support" class="dropdown__link">
+                  <i class="ri-message-3-line"></i> Sponsor
                 </a>
               </li>
 
@@ -66,7 +66,6 @@ $services =  kueri("SELECT * FROM services ORDER BY id DESC");
 
           <li><a href="#galery" class="nav__link">Galeri</a></li>
           <li><a href="#contact" class="nav__link">Kontak</a></li>
-          <li><a href="#support" class="nav__link">Sponsor</a></li>
         </ul>
       </div>
     </nav>
@@ -79,11 +78,11 @@ $services =  kueri("SELECT * FROM services ORDER BY id DESC");
       <p>Smanusa - SMA Negeri 1 Ngunut</p>
     </div>
     <div class="recent-wrapper">
-      <h1>Recently Events</h1>
+      <h1>Acara Terakhir</h1>
       <div class="recent">
         <?php foreach ($all as $part) : ?>
           <a href="<?= $part["link"] ?>" class="img-wrapper">
-            <img src="assets/img/<?= $part["image"] ?>" alt="Acara Terakhir">
+            <img src="assets/img/<?= $part["image"] ?>" loading="lazy" alt="Acara Terakhir">
             <h1><?= $part["caption"] ?></h1>
           </a>
         <?php endforeach ?>
@@ -95,16 +94,17 @@ $services =  kueri("SELECT * FROM services ORDER BY id DESC");
   <!--=============== SECTION SERVICE ===============-->
   <section class="section-container" id="service">
     <h1 class="section-title">Layanan</h1>
-    <div class="service-wrapper">
-     <?php foreach ($services as $service) : ?>
-      <div class="elemen">
-        <h1 class="service-title"><?= $service["caption"]?></h1>
-        <img src="assets/img/<?=$service["image"]?>" alt="Gambar Layanan">
-        <h3><a href="<?= $service["link"] ?>">Klik Disini !</a></h3>
+    <div class="service-wrapper select">
+      <!-- <a href="https://www.instagram.com/whatsonsmanusa?igsh=czl1Mm5xc3NiOWxo" class="elemen service-el">
+      <img src="assets/img/daniel-leone-v7daTKlZzaw-unsplash.jpg" alt="">
+        <h1 class="service-title">Service 1</h1>
+        <p>Caption</p>
+      </a> -->
+      <div class="card">
+        <img src="assets/img/daniel-leone-v7daTKlZzaw-unsplash.jpg" loading="lazy" alt="service">
+        <h1>Layanan Satu</h1>
+        <p>Deskripsi Layanan 1</p>
       </div>
-    <?php endforeach ?>
-      
-
     </div>
   </section>
 
@@ -128,6 +128,17 @@ $services =  kueri("SELECT * FROM services ORDER BY id DESC");
     </div>
   </section>
 
+  <!--=============== SECTION GALLERY ===============-->
+  <section class="section-container" id="galery">
+    <h1 class="section-title">Galery</h1>
+    <div class="galery-wrapper">
+      <?php foreach ($posts as $post) : ?>
+      <div class="galery-photo">
+        <img src="assets/img/<?=$post["image"]?>" loading="lazy" alt="galery">
+      </div>
+      <?php endforeach ?>
+    </div>
+  </section>
 
   <!--=============== SECTION ABOUT ===============-->
   <section class="section-container" id="about">
@@ -141,20 +152,6 @@ $services =  kueri("SELECT * FROM services ORDER BY id DESC");
       </div>
     </div>
   </section>
-
-  <!--=============== SECTION GALLERY ===============-->
-  <section class="section-container" id="galery">
-    <h1 class="section-title">Galery</h1>
-    <div class="galery-wrapper">
-      <?php foreach ($posts as $post) : ?>
-      <div class="galery-photo">
-        <img src="assets/img/<?=$post["image"]?>" alt="">
-      </div>
-      <?php endforeach ?>
-    </div>
-  </section>
-
-
 
   <!--=============== SECTION CONTACT ===============-->
   <section class="section-container" id="contact">
@@ -170,16 +167,20 @@ $services =  kueri("SELECT * FROM services ORDER BY id DESC");
   </section>
   <!--=============== SECTION SUPPORTED ===============-->
   <section class="section-container" id="support">
-    <h1 class="section-title">Kontak</h1>
-    <div class="about-wrapper">
-      <div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis odit quod rerum. Veritatis fuga deserunt recusandae fugit numquam iusto nihil minus magnam a. Consectetur doloribus, suscipit quis officiis perferendis aperiam?</p>
+    <h1 class="section-title">Sponsor</h1>
+    <i class="section-title"><h2>Terimakasih Kepada</h2></i>
+    <div class="about-wrapper support">
+      <div class="support-image">
+        <img src="assets/img/daniel-leone-v7daTKlZzaw-unsplash.jpg" alt="">
       </div>
-      <div>
-        <P>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae aut laborum voluptatibus magni sint et earum reprehenderit dicta neque nostrum, adipisci ratione, eius quaerat fugiat explicabo quas necessitatibus placeat illum.</P>
       </div>
     </div>
   </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Dibuat Dengan Susah payah :) &copy; <?= date('Y')?> - All Rights Reserved.</p>
+  </footer>
   <!--=============== MAIN JS ===============-->
   <script src="assets/js/main.js"></script>
 </body>

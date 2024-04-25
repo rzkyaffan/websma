@@ -7,13 +7,12 @@
 
   /*========== Colors ==========*/
   /*Color mode HSL(hue, saturation, lightness)*/
-  --black-color: hsl(220, 24%, 12%);
-  --black-color-light: hsl(220, 24%, 15%);
-  --black-color-lighten: hsl(220, 20%, 18%);
+  --black-color: #212121;
   --white-color: #ededed;
-  --body-color: hsl(210, 7%, 5%);
+  --body-color: #161718;
 
-  /*========== Font and typography ==========*/
+
+  /*========== Frgb(44, 47, 49) typography ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/
   --body-font: "Montserrat", sans-serif;
   --normal-font-size: 0.938rem;
@@ -63,6 +62,10 @@ a {
   text-decoration: none;
   font-size: 0.9rem;
 }
+h2{
+  font-size: .8rem;
+  font-weight: 200;
+}
 
 /*=============== REUSABLE CSS CLASSES ===============*/
 .container {
@@ -78,10 +81,6 @@ a {
   flex-direction: column;
   justify-content: center;
 }
-a h1{
-  color: var(--white-color);
-  font-size: .8rem;
-}
 .section-title {
   text-align: center;
 }
@@ -89,6 +88,12 @@ a h1{
 h3 {
   font-size: 0.7rem;
   font-weight: 400;
+}
+a h1{
+  color: var(--white-color);
+}
+p{
+  font-size: .7rem;
 }
 /*=============== HEADER ===============*/
 .header {
@@ -164,7 +169,8 @@ h3 {
 #support,
 #contact{
   margin: auto;
-  padding-top: 7rem;
+  padding-top: 6rem;
+  height: fit-content;
 }
 
 #home {
@@ -191,7 +197,8 @@ h3 {
 }
 .recent-wrapper h1 {
   font-weight: 500;
-  font-size: 1.5rem;
+  color: var(--white-color);
+  font-size: 1rem;
   padding: 0.2rem 0;
 }
 
@@ -283,7 +290,7 @@ h3 {
 .dropdown__sublink {
   padding: 1.25rem 1.25rem 1.25rem 2.5rem;
   color: var(--white-color);
-  background-color: var(--black-color-light);
+  background-color: var(--black-color);
   display: flex;
   align-items: center;
   column-gap: 0.5rem;
@@ -299,7 +306,7 @@ h3 {
 
 .dropdown__link:hover,
 .dropdown__sublink:hover {
-  background-color: var(--black-color);
+  background-color: var(--body-color);
 }
 
 .dropdown__menu,
@@ -335,7 +342,7 @@ h3 {
   color: rgb(162, 50, 22);
 }
 
-/* SERVICE SECTION */
+/* SOSMED SECTION */
 .service-wrapper {
   display: flex;
   justify-content: center;
@@ -374,6 +381,84 @@ h3 {
   width: 12rem;
   height: 10rem;
 }
+
+
+/* SECTION ABOUT */
+.about-wrapper {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+.about-wrapper p {
+  text-align: justify;
+}
+
+/* SECTION GALERY */
+.galery-wrapper{
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.galery-wrapper img{
+  object-fit: cover;
+  object-position: center;
+}
+
+/* SECTION SERVICE */
+.service-el{
+  border: none;
+  background: #141515;
+}
+.select :nth-child(odd) {
+  background-color: #121111;
+}
+.select h1{
+  font-size: 1.1rem;
+}
+.select p{
+  font-size: .8rem;
+  color: var(--white-color);
+}
+.service-el img{
+  border-radius:0;
+}
+
+.card{
+  width: 18rem;
+  height: 10rem;
+  padding: 2rem;
+  border: 1px solid red;
+}
+.card img{
+  width: 15rem;
+  height: 10rem;
+  object-fit: cover;
+}
+/* SECTION SPONSOR */
+#support i{
+  margin-top: .6rem;
+}
+.support h2{
+  text-align: center;
+}
+.support-image{
+  border: 1px solid magenta;
+}
+.support-image img{
+  width: 15rem;
+  height: 8rem;
+  object-fit: cover;
+}
+
+/* FOOTER */
+footer{
+  padding: .8rem;
+  background: red;
+  text-align: center;
+}
+
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 @media screen and (max-width: 648px) {
@@ -393,10 +478,13 @@ h3 {
   .elemen {
     width: 100%;
   }
-  .galery-wrapper img{
+.galery-wrapper img{
     width: 100%;
 }
 .galery-photo{
+  width: 100%;
+}
+.support-image img{
   width: 100%;
 }
 }
@@ -479,25 +567,3 @@ h3 {
   }
 }
 
-/* SECTION ABOUT */
-.about-wrapper {
-  display: flex;
-  gap: 2rem;
-  margin-top: 1rem;
-}
-.about-wrapper p {
-  text-align: justify;
-}
-
-/* SECTION GALERY */
-.galery-wrapper{
-  display: flex;
-  gap: 2rem;
-  margin-top: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.galery-wrapper img{
-  object-fit: cover;
-  object-position: center;
-}

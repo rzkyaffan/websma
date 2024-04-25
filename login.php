@@ -33,7 +33,7 @@ if (isset($_POST["submit"])) {
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: url(../assets/daniel-leone-v7daTKlZzaw-unsplash.jpg);
+            background: url(assets/img/daniel-leone-v7daTKlZzaw-unsplash.jpg);
             background-position: center;
             background-size: cover;
             background-color: rgba(0, 0, 0, 0.5);
