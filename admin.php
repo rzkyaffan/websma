@@ -193,7 +193,7 @@ if (isset($_POST["kirim"])) {
             <button type="submit" name="submit">Create</button>
         </form>
 
-        <h1>Priview Data Recenly Event & Layanan</h1>
+        <h1>Priview Data Acara Terakhir & Galeri</h1>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th>ID</th>
@@ -216,53 +216,7 @@ if (isset($_POST["kirim"])) {
             <?php $i++; ?>
         <?php endforeach; ?>
         </table>
-
-        <h1>Layanan</h1>
-        <form action="" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="no">
-            <li>
-                <label for="tautan">Tautan</label>
-                <input type="text" name="tautan" id="tautan" required>
-            </li>
-
-            <li>
-                <label for="gambar">Gambar</label>
-                <input type="file" name="gambar" id="gambar">
-            </li>
-
-            <li>
-                <label for="keterangan">Keterangan</label>
-                <input type="text" name="keterangan" id="keterangan" required>
-            </li>
-            <button type="submit" name="kirim">Buat</button>
-        </form>
-
-        <h1>Priview Data Galery & Recenly Event</h1>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th>ID</th>
-                <th>Tautan</th>
-                <th>Gambar</th>
-                <th>Keterangan</th>
-                <th>Aksi</th>
-            </tr>
-            <tr>
-                <?php $i = 1; ?>
-                <?php foreach ($services as $service) : ?>
-                    <td><?= $i ?></td>
-                    <td><?= $service["link"]; ?></td>
-                    <td><?= $service["image"]; ?></td>
-                    <td><?= $service["caption"]; ?></td>
-                    <td>
-                        <button type="submit" class="btn danger" onclick="return confirm(`apakah anda yakin? \ntindakan ini tidak dapat diurungkan`)"><a href="delete.php?id=<?= $service["id"] ?>&data2=<?= $service["image"] ?>" class="danger">Delete</a></button>
-                    </td>
-            </tr>
-            <?php $i++; ?>
-        <?php endforeach; ?>
-        </table>
-
-
-    </main>
+</main>
 
     <script src="assets/js/main.js"></script>
 </body>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_POST["submit"])) {
-    if ($_POST["username"] == "admin" && $_POST["Password"] == "smanusaArt2024") {
+    if ($_POST["username"] == "admin" && $_POST["Password"] == "password") {
         // Buat Session
         $_SESSION["login"] = true;
         header("Location: admin.php");
@@ -67,6 +67,7 @@ if (isset($_POST["submit"])) {
             border: none;
             border-bottom: .1rem solid #ededed;
             margin-bottom: 1rem;
+            color: #ededed;
         }
 
         button {
@@ -92,6 +93,10 @@ if (isset($_POST["submit"])) {
             align-items: center;
             justify-content: center;
             gap: .3rem;
+        }
+        form input:focus{
+            outline:none;
+            color: #ededed;
         }
     </style>
 </head>
