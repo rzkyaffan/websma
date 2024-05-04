@@ -6,14 +6,15 @@ if( !isset($_SESSION["login"])){
 }
 require 'functions.php';
 
-$posts = query("SELECT * FROM post ORDER BY id DESC");
+$prestasi = query("SELECT * FROM prestasi ORDER BY no DESC");
+
     if (isset($_POST["submit"])) {
-        if (tambah($_POST) > 0) {
+        if (add($_POST) > 0) {
             echo
             "
         <script>
         alert('input successful');
-        document.location.href = 'index.php'
+        document.location.href = '/smanusa'
         </script>
             ";
         } else {
@@ -149,48 +150,45 @@ $posts = query("SELECT * FROM post ORDER BY id DESC");
 <body>
     <main>
         <header>
-            <h1>Selamat datang, Admin</h1>
-            <a href="prestasi.php">Edit Prestasi</a>
+            <h1>Welcome, Admin</h1>
         </header>
 
         <h1>Recently Event & Galeri</h1>
         <form action="" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="id">
             <li>
-                <label for="links">Link</label>
-                <input type="text" name="links" id="links" required>
+                <label for="gambar">Gambar</label>
+                <input type="file" name="gambar" id="gambar">
             </li>
-
             <li>
-                <label for="image">Gambar</label>
-                <input type="file" name="image" id="image">
+                <label for="judul">Judul</label>
+                <input type="text" name="judul" id="judul" required>
             </li>
-
             <li>
-                <label for="caption">Keterangan</label>
-                <input type="text" name="caption" id="caption" required>
+                <label for="keterangan">Keterangan</label>
+                <input type="text" name="keterangan" id="keterangan" required>
             </li>
             <button type="submit" name="submit">Tambahkan</button>
         </form>
 
-        <h1>Priview Data Acara Terakhir & Galeri</h1>
+        <h1>Priview Data Prestasi Siswa</h1>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th>ID</th>
-                <th>Tautan</th>
                 <th>Gambar</th>
+                <th>Judul</th>
                 <th>Keterangan</th>
                 <th>Aksi</th>
             </tr>
             <tr>
                 <?php $i = 1; ?>
-                <?php foreach ($posts as $post) : ?>
+                <?php foreach ($prestasi as $pres) : ?>
                     <td><?= $i ?></td>
-                    <td><?= $post["link"]; ?></td>
-                    <td><img src="assets/img/<?= $post["image"]?>" alt="gambar-event-terakhir"></td>
-                    <td><?= $post["caption"]; ?></td>
+                    <td><img src="assets/img/<?= $pres["gambar"]?>" alt="gambar prestasi"></td>
+                    <td><?= $pres["judul"]; ?></td>
+                    <td><?= $pres["keterangan"]; ?></td>
                     <td>
-                        <button type="submit" class="btn danger" onclick="return confirm(`apakah anda yakin? \ntindakan ini tidak dapat diurungkan`)"><a href="delete.php?id=<?= $post["id"] ?>&data2=<?= $post["image"] ?>" class="danger">Hapus</a></button>
+                        <button type="submit" class="btn danger" onclick="return confirm(`apakah anda yakin? \ntindakan ini tidak dapat diurungkan`)"><a href="hapus.php?id=<?= $pres["no"] ?>&data2=<?= $pres["gambar"] ?>" class="danger">Hapus</a></button>
                     </td>
             </tr>
             <?php $i++; ?>

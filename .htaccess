@@ -1,3 +1,9 @@
 <Files "functions.php">
     Deny from all
 </Files>
+<Files "delete.php">
+    Deny from all
+</Files>
+<Files "hapus.php">
+    Deny from all
+</Files>

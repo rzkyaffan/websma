@@ -9,7 +9,7 @@
   --black-color: #212121;
   --white-color: #ededed;
   --body-color: #343434;
-  --second-body-col: #3a3a3a;
+  --second-body-col: #222222;
 
 
   /*========== Frgb(44, 47, 49) typography ==========*/
@@ -77,10 +77,10 @@ h2{
 section{
   margin: auto;
   padding: 9rem 9% 2rem ;
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
 
 .section-title {
@@ -117,12 +117,13 @@ li{
 }
 #home,
 #galery,
-#contact{
+#about,
+#support{
   background-color:var(--body-color);
 }
 #service,
-#about,
-#support{
+#achiv,
+#contact{
   background-color: var(--second-body-col);
 }
 /*=============== HEADER ===============*/
@@ -159,8 +160,7 @@ li{
   align-items: center;
   column-gap: 0.25rem;
   font-weight: var(--font-semi-bold);
-  /* Color highlighting when pressed on mobile devices */
-  /*-webkit-tap-highlight-color: transparent;*/
+  -webkit-tap-highlight-color: transparent;
 }
 
 .nav__logo i {
@@ -398,8 +398,6 @@ li{
 
 .pagination a{
   color: var(--white-color);
-  border: .1rem solid var(--white-color);
-  border-radius: 50%;
   padding: .9rem;
   display: flex;
   align-items: center;
@@ -410,23 +408,30 @@ li{
   background-color:#007bff;
 }
 
-
-
-
 .card{
-  width: 18rem;
-  background:var(--black-color);
+  width: 15rem;
+  background:#001F3F;
   display: flex;
   flex-direction: column;
   border-radius: .4rem;
+  transition: .5s ease-in-out;
+  overflow: hidden;
+}
+.card:hover{
+  transform: scale(1.1);
 }
 .card img{
   width: 100%;
   height: 10rem;
   object-fit: cover;
+  object-position: center;
 }
 .card-cap{
+  height: 100%;
   padding: .8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
 }
 .card-cap h1{
   font-size: .8rem;
@@ -435,12 +440,39 @@ li{
 .card-cap p {
   line-height: .9rem;
 }
+
+/* SECTION ACHIEVEMENT */
+.achievment-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.achiv-card{
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  animation: animasi-border 2s linear infinite; 
+  padding: 1rem;
+  gap: 1.2rem;
+}
+.achiv-card img{
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  align-self: center;
+}
 /* LAYANAN */
 .layanan-wrapper{
   display: flex;
   justify-content: center;
-  gap: .8rem;
+  flex-wrap: wrap;
+  gap: 2rem;
   margin-top: 1rem;
+  height: fit-content;
 }
 /* SECTION SPONSOR */
 #support i{
@@ -471,31 +503,24 @@ li{
 
 /* FOOTER */
 footer{
-  padding: .8rem;
+  padding: .8rem 7%;
   background:var(--black-color);
   text-align: center;
   color:var(--white-color);
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 footer p{
   font-size: .8rem;
   font-weight: bold;
 } 
 .back-top{
-  z-index: 9999;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  bottom: 50%;
-  padding: .2rem;
-  margin-right: 1rem;
-  border: .1rem solid rgb(81, 93, 87);
-  border-radius: .2rem;
+  border: 1px solid var(--white-color);
   display: flex;
   align-items: center;
-}
-.backtop svg{
-  position: relative;
+  padding:.5rem;
+  border-radius: .3rem;
 }
 
 /* SECTION CONTACT */
@@ -544,7 +569,7 @@ form button{
 }
 .contact svg{
   background: #5b5b5b;
-  padding: .3rem;
+  padding: .4rem;
   border-radius: 50%;
 }
 .vertical{
@@ -598,8 +623,15 @@ a svg{
 .galery-photo{
   width: 100%;
 }
+.support-image{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
 .support-image img{
-  width: 100%;
+  width: 10rem;
+  height: 10rem;
 }
 .layanan-wrapper{
   flex-direction: column;
@@ -703,3 +735,20 @@ section{
   }
 }
 
+@keyframes animasi-border {
+  0% {
+    border-color: red;
+  }
+  25% {
+    border-color: orange;
+  }
+  50% {
+    border-color: yellow;
+  }
+  75% {
+    border-color: green;
+  }
+  100% {
+    border-color: blue;
+  }
+}

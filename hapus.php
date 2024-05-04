@@ -3,7 +3,7 @@ require 'functions.php';
 
 $id = $_GET["id"];
 
-if(delete($id) > 0){
+if(hapus($id) > 0){
     echo "
     <script>
     confirm(`data berhasil di hapus` )
