@@ -77,7 +77,7 @@ h2{
 section{
   margin: auto;
   padding: 9rem 9% 2rem ;
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -410,7 +410,7 @@ li{
 
 .card{
   width: 15rem;
-  background:#001F3F;
+  background:#2c2942;
   display: flex;
   flex-direction: column;
   border-radius: .4rem;
@@ -446,6 +446,8 @@ li{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 .achiv-card{
   width: 20rem;
@@ -464,6 +466,10 @@ li{
   object-position: center;
   border-radius: 50%;
   align-self: center;
+}
+.achiv-card h1{
+  text-align: center;
+  font-size: 1.1rem;
 }
 /* LAYANAN */
 .layanan-wrapper{
@@ -541,10 +547,16 @@ footer p{
 }
 .contact form label{
   flex: 1;
-  background: #232323;
+  background: #505050;
   padding: .3rem;
   color: #858585;
   font-weight: 700;
+}
+.contact form textarea{
+  padding: .2rem;
+  flex: 2;
+  background: #161616;
+  color: var(--white-color);
 }
 .contact form input {
   flex: 2;
@@ -553,6 +565,10 @@ footer p{
   color: var(--white-color);
 }
 .contact form input:focus {
+  outline: none;
+  color: var(--white-color);
+}
+.contact form textarea:focus {
   outline: none;
   color: var(--white-color);
 }
@@ -653,6 +669,9 @@ a svg{
 }
 section{
   padding: 1rem;
+}
+.achiv-card{
+  width: 90%;
 }
 }
 

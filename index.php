@@ -111,7 +111,7 @@ $posts = query("SELECT * FROM post ORDER BY id DESC LIMIT $awalData , $galeryImg
     </div>
     <div class="recent-wrapper animate__animated animate__slideInRight ">
       <h1>Acara Terakhir</h1>
-      <div class="recent">
+      <div class="recent">git
         <?php foreach ($all as $part) : ?>
           <a href="<?= $part["link"] ?>" class="img-wrapper">
             <img src="assets/img/<?= $part["image"] ?>" loading="lazy" alt="Acara Terakhir">
@@ -205,7 +205,7 @@ $posts = query("SELECT * FROM post ORDER BY id DESC LIMIT $awalData , $galeryImg
   <div class="achievment-wrapper">
     <?php foreach($achiv as $ac):?>
     <div class="achiv-card">
-    <img src="assets/img/<?= $ac["gambar"] ?>" loading="lazy" alt="prestasi">
+    <img src="assets/img/<?= $ac["gambar"] ?>" loading="lazy" alt="<?=$ac["judul"] ?>">
     <h1><?=$ac["judul"] ?></h1>
       <p><?= $ac["keterangan"]?></p>
     </div>
@@ -241,7 +241,8 @@ $posts = query("SELECT * FROM post ORDER BY id DESC LIMIT $awalData , $galeryImg
         </li>
         <li>
           <label for="message">Pesan</label>
-          <input type="message" name="message" id="message" autocomplete="off" required>
+          <textarea name="message" id="message" autocomplete="off" required></textarea>
+         
         </li>
         <input type="hidden" name="_captcha" value="false">
         <button>Kirim</button>
@@ -272,8 +273,8 @@ $posts = query("SELECT * FROM post ORDER BY id DESC LIMIT $awalData , $galeryImg
     </i>
     <div class="about-wrapper support">
       <div class="support-image">
-        <img src="assets/img/daniel-leone-v7daTKlZzaw-unsplash.jpg" alt="">
-        <img src="assets/img/vf sponsor.png" alt="">
+        <img src="assets/img/daniel-leone-v7daTKlZzaw-unsplash.jpg" alt="" loading="lazy">
+        <img src="assets/img/vf sponsor.png" alt="vf-sponsor" loading="lazy">
       </div>
     </div>
     </div>

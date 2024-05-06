@@ -1,9 +1,6 @@
 <Files "functions.php">
-    Deny from all
+  Order allow,deny
+  Deny from all
+  ErrorDocument 403 /index.html
 </Files>
-<Files "delete.php">
-    Deny from all
-</Files>
-<Files "hapus.php">
-    Deny from all
-</Files>
+

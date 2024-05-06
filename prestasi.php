@@ -153,7 +153,8 @@ $prestasi = query("SELECT * FROM prestasi ORDER BY no DESC");
             <h1>Welcome, Admin</h1>
         </header>
 
-        <h1>Recently Event & Galeri</h1>
+        <h1>Prestasi Siswa</h1>
+        <a href="admin.php">Kembali Ke halaman Admin</a>
         <form action="" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="id">
             <li>
