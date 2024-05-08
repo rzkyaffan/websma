@@ -1,6 +1,2 @@
-<Files "functions.php">
-  Order allow,deny
-  Deny from all
-  ErrorDocument 403 /index.html
-</Files>
-
+RewriteEngine On
+ErrorDocument 404 http://localhost/smanusa/404.html

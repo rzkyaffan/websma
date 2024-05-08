@@ -74,7 +74,7 @@ function upload()
     $namaFileBaru = uniqid();
     $namaFileBaru .= '.';
     $namaFileBaru .= $ekstensiGambar;
-    move_uploaded_file($tmpName, 'assets/img/' . $namaFileBaru);
+    move_uploaded_file($tmpName, '../assets/img/' . $namaFileBaru);
     return $namaFileBaru;
 }
 
@@ -87,7 +87,7 @@ function delete()
     global $id;
     $image = $_GET["data2"];
     mysqli_query($db, "DELETE FROM post WHERE id = $id");
-    $fileToDelete = 'assets/img/'.$image;
+    $fileToDelete = '../assets/img/'.$image;
     if (file_exists($fileToDelete)) {
         if (unlink($fileToDelete)) {
             echo "<script>
@@ -174,7 +174,7 @@ function unggah()
     $namaFileBaru = uniqid();
     $namaFileBaru .= '.';
     $namaFileBaru .= $ekstensiGambar;
-    move_uploaded_file($tmpName, 'assets/img/' . $namaFileBaru);
+    move_uploaded_file($tmpName, '../assets/img/' . $namaFileBaru);
     return $namaFileBaru;
 }
 
@@ -186,8 +186,8 @@ function hapus()
     global $db;
     global $id;
     $image = $_GET["data2"];
-    mysqli_query($db, "DELETE FROM prestasi WHERE id = $id");
-    $fileToDelete = 'assets/img/'.$image;
+    mysqli_query($db, "DELETE FROM prestasi WHERE no = $id");
+    $fileToDelete = '../assets/img/'.$image;
     if (file_exists($fileToDelete)) {
         if (unlink($fileToDelete)) {
             echo "<script>

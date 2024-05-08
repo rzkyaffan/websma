@@ -185,7 +185,7 @@ $prestasi = query("SELECT * FROM prestasi ORDER BY no DESC");
                 <?php $i = 1; ?>
                 <?php foreach ($prestasi as $pres) : ?>
                     <td><?= $i ?></td>
-                    <td><img src="assets/img/<?= $pres["gambar"]?>" alt="gambar prestasi"></td>
+                    <td><img src="../assets/img/<?= $pres["gambar"]?>" alt="gambar prestasi"></td>
                     <td><?= $pres["judul"]; ?></td>
                     <td><?= $pres["keterangan"]; ?></td>
                     <td>

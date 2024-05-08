@@ -1,10 +1,10 @@
 <?php
 session_start();
 if (isset($_POST["submit"])) {
-    if ($_POST["username"] == "admin" && $_POST["Password"] == "password") {
+    if ($_POST["username"] == "admin" && $_POST["Password"] == "123") {
         // Buat Session
         $_SESSION["login"] = true;
-        header("Location: admin.php");
+        header("Location: index.php");
     } else {
         $eror = true;
     }
@@ -25,7 +25,6 @@ if (isset($_POST["submit"])) {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* border: 1px solid red; */
         }
 
         .container {
@@ -33,7 +32,7 @@ if (isset($_POST["submit"])) {
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: url(assets/img/daniel-leone-v7daTKlZzaw-unsplash.jpg);
+            background: url(../assets/img/daniel-leone-v7daTKlZzaw-unsplash.jpg);
             background-position: center;
             background-size: cover;
             background-color: rgba(0, 0, 0, 0.5);
@@ -114,7 +113,7 @@ if (isset($_POST["submit"])) {
             </li>
             <button type="submit" name="submit">Masuk</button>
             <?php if (isset($eror)) : ?>
-                <h5>
+                <h5 id="countdown">
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-circle">
                         <circle cx="12" cy="12" r="10"></circle>
                         <line x1="12" y1="8" x2="12" y2="12"></line>

@@ -13,7 +13,6 @@ $posts = query("SELECT * FROM post ORDER BY id DESC");
             "
         <script>
         alert('input successful');
-        document.location.href = 'index.php'
         </script>
             ";
         } else {
@@ -150,7 +149,8 @@ $posts = query("SELECT * FROM post ORDER BY id DESC");
     <main>
         <header>
             <h1>Selamat datang, Admin</h1>
-            <a href="prestasi.php">Edit Prestasi</a>
+            <a href="prestasi.php">Edit Prestasi</a><br>
+            <a href="../">Logout</a>
         </header>
 
         <h1>Recently Event & Galeri</h1>
@@ -158,7 +158,7 @@ $posts = query("SELECT * FROM post ORDER BY id DESC");
             <input type="hidden" name="id">
             <li>
                 <label for="links">Link</label>
-                <input type="text" name="links" id="links" required>
+                <input type="text" name="links" id="links">
             </li>
 
             <li>
@@ -168,7 +168,7 @@ $posts = query("SELECT * FROM post ORDER BY id DESC");
 
             <li>
                 <label for="caption">Keterangan</label>
-                <input type="text" name="caption" id="caption" required>
+                <input type="text" name="caption" id="caption">
             </li>
             <button type="submit" name="submit">Tambahkan</button>
         </form>
@@ -187,7 +187,7 @@ $posts = query("SELECT * FROM post ORDER BY id DESC");
                 <?php foreach ($posts as $post) : ?>
                     <td><?= $i ?></td>
                     <td><?= $post["link"]; ?></td>
-                    <td><img src="assets/img/<?= $post["image"]?>" alt="gambar-event-terakhir"></td>
+                    <td><img src="../assets/img/<?= $post["image"]?>" alt="gambar-event-terakhir"></td>
                     <td><?= $post["caption"]; ?></td>
                     <td>
                         <button type="submit" class="btn danger" onclick="return confirm(`apakah anda yakin? \ntindakan ini tidak dapat diurungkan`)"><a href="delete.php?id=<?= $post["id"] ?>&data2=<?= $post["image"] ?>" class="danger">Hapus</a></button>

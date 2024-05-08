@@ -366,8 +366,12 @@ li{
   gap: 2rem;
   margin-top: 1rem;
 }
+#about{
+  height: fit-content;
+}
 .about-wrapper p {
   text-align: justify;
+  font-size: .7rem;
 }
 
 /* SECTION GALERY */
@@ -410,7 +414,7 @@ li{
 
 .card{
   width: 15rem;
-  background:#2c2942;
+  background:#3f3b3e;
   display: flex;
   flex-direction: column;
   border-radius: .4rem;
@@ -501,10 +505,14 @@ li{
 .support{
   justify-content: center;
 }
-.card button a{
+.card button,
+ .card a{
   display: flex;
   align-items: center;
   justify-content: center;
+  color:#3ea6ff;
+  font-weight: bold;
+  background: #263850;
 }
 
 /* FOOTER */
@@ -617,6 +625,9 @@ a svg{
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
 @media screen and (max-width: 720px) {
+  section{
+    justify-content: center;
+  }
   .container {
     margin-inline: 1rem;
   }
@@ -678,6 +689,9 @@ section{
 
 /* For large devices */
 @media screen and (min-width: 1118px) {
+  html{
+    font-size: 100%;
+  }
   .container {
     margin-inline: auto;
   }
@@ -771,3 +785,4 @@ section{
     border-color: blue;
   }
 }
+
